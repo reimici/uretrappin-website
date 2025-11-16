@@ -1,0 +1,30 @@
+/* Un po' di stile base per iniziare */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+/* Stile per la vetrina nella home */
+.vetrina {
+    display: flex; /* Mette i prodotti uno accanto all'altro */
+    gap: 20px;     /* Spazio tra i prodotti */
+}
+
+.prodotto-anteprima {
+    border: 1px solid #ccc;
+    padding: 15px;
+    background-color: white;
+    text-align: center;
+}
+
+/* Rende le immagini reattive */
+.prodotto-anteprima img {
+    max-width: 100%;
+    height: auto;
+}
