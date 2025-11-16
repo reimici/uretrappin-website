@@ -1,30 +1,77 @@
-/* Un po' di stile base per iniziare */
+/* Resetta il body */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
+    padding: 0;
+    /* Non mettere NESSUN background-color qui! */
 }
+
+/* --- STILI PER LO SFONDO VIDEO --- */
+
+#video-background {
+    position: fixed; /* 1. Fissalo! */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* 2. Alto 100% dello schermo (viewport height) */
+    z-index: -1;   /* 3. Mettilo DIETRO a tutto */
+    overflow: hidden; /* 4. Nascondi le parti che escono */
+}
+
+#video-background video {
+    /* 5. Fai in modo che il video copra l'intera area senza deformarsi */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- STILI PER IL CONTENUTO SCORREVOLE --- */
+
+#scrollable-content {
+    position: relative; /* 6. Necessario per far funzionare lo z-index */
+    z-index: 1;         /* 7. Mettilo DAVANTI al video */
+    width: 100%;
+    /* 8. Il background deve essere trasparente per vedere il video sotto */
+    background-color: transparent; 
+}
+
+/* Ora metti i padding qui, invece che sul body */
+header, main {
+    padding: 20px;
+    /* Consiglio: metti un po' di trasparenza scura ai tuoi
+       contenitori per migliorare la leggibilità del testo sul video */
+}
+
+/* --- IL TUO VECCHIO STILE (va ancora bene) --- */
 
 h1, h2 {
-    color: #333;
+    color: #FFF; /* Cambiato in bianco per leggibilità sul video */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Ombra per leggere meglio */
 }
 
-/* Stile per la vetrina nella home */
 .vetrina {
-    display: flex; /* Mette i prodotti uno accanto all'altro */
-    gap: 20px;     /* Spazio tra i prodotti */
+    display: flex;
+    flex-direction: column; /* Mobile-first: mettili in colonna */
+    gap: 20px;
 }
 
 .prodotto-anteprima {
     border: 1px solid #ccc;
     padding: 15px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9); /* Sfondo leggermente trasparente */
     text-align: center;
 }
 
-/* Rende le immagini reattive */
 .prodotto-anteprima img {
     max-width: 100%;
     height: auto;
+}
+
+/* --- MEDIA QUERY PER IL DESKTOP (Responsive) --- */
+@media (min-width: 769px) {
+    
+    /* Quando lo schermo è largo, mettili in riga */
+    .vetrina {
+        flex-direction: row; 
+    }
 }

@@ -1,40 +1,53 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-B">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Il Nostro Negozio</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Vetrina Capi</h1>
-    </header>
+    <div id="video-background">
+        <video autoplay loop muted playsinline poster="images/poster-fallback.jpg">
+            <source src="videos/video-mobile.mp4" type="video/mp4" media="all and (max-width: 768px)">
+            <source src="videos/video-desktop.mp4" type="video/mp4" media="all and (min-width: 769px)">
+            Il tuo browser non supporta i video.
+        </video>
+    </div>
 
-    <main>
-        <h2>I nostri prodotti</h2>
-        
-        <div class="vetrina">
+    <div id="scrollable-content">
+
+        <header>
+            <h1>Vetrina Capi</h1>
+        </header>
+
+        <main>
+            <h2>I nostri prodotti</h2>
             
-            <div class="prodotto-anteprima">
-                <a href="pages/product1.html">
-                    <img src="images/capo1_principale.jpg" alt="Anteprima Capo 1">
-                    <h3>Nome Capo 1</h3>
-                </a>
-                <p>Descrizione breve o prezzo</p>
+            <div class="vetrina">
+                
+                <div class="prodotto-anteprima">
+                    <a href="pagine/prodotto1.html">
+                        <img src="images/capo1_principale.jpg" alt="Anteprima Capo 1">
+                        <h3>Nome Capo 1</h3>
+                    </a>
+                    <p>Descrizione breve o prezzo</p>
+                </div>
+
+                <div class="prodotto-anteprima">
+                    <a href="pagine/prodotto2.html">
+                        <img src="images/capo2_principale.jpg" alt="Anteprima Capo 2">
+                        <h3>Nome Capo 2</h3>
+                    </a>
+                    <p>Descrizione breve o prezzo</p>
+                </div>
+
             </div>
-
-            <div class="prodotto-anteprima">
-                <a href="pages/product2.html">
-                    <img src="images/capo2_principale.jpg" alt="Anteprima Capo 2">
-                    <h3>Nome Capo 2</h3>
-                </a>
-                <p>Descrizione breve o prezzo</p>
+            <div style="height: 1000px; background: rgba(255,0,0,0.1);">
+                (Spazio vuoto per provare a scorrere)
             </div>
-
-        </div>
-    </main>
-
-</body>
+        </main>
+        
+    </div> </body>
 </html>
