@@ -58,7 +58,7 @@ h1, h2 {
 .prodotto-anteprima {
     border: 1px solid #ccc;
     padding: 15px;
-    background-color: rgba(255, 255, 255, 0.9); /* Sfondo leggermente trasparente */
+    background-color: rgba(255, 255, 255, 0.173); /* Sfondo leggermente trasparente */
     text-align: center;
 }
 
