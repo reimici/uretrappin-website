@@ -8,18 +8,31 @@
 </head>
 <body>
 
-    <header>
-        <a href="../index.html">Torna alla Home</a>
-        <h1>Nome Capo 1</h1>
-    </header>
+    <div id="video-background">
+        <video autoplay loop muted playsinline poster="../images/poster-fallback.jpg">
+            <source src="../videos/video-mobile.mp4" type="video/mp4" media="all and (max-width: 768px)">
+            <source src="../videos/video-desktop.mp4" type="video/mp4" media="all and (min-width: 769px)">
+            Il tuo browser non supporta i video.
+        </video>
+    </div>
 
-    <main>
-        <img src="../images/capo2_principale.png" alt="Foto dettaglio Capo 2">
-        
-        <h2>Descrizione</h2>
-        <p>Qui va la descrizione dettagliata del prodotto 1.</p>
-        <p>Prezzo: XX.XX €</p>
+    <div id="scrollable-content">
+
+        <header>
+            <a href="../index.html">Torna alla Home</a>
+            <h1>Nome Capo 1</h1>
+        </header>
+
+        <main>
+            <img src="../images/capo1_principale.png" alt="Foto dettaglio Capo 1">
+            
+            <h2>Descrizione</h2>
+            <p>Qui va la descrizione dettagliata del prodotto 1.</p>
+            <p>Prezzo: XX.XX €</p>
+
+            <h2>Retro</h2>
+            <img src="../images/capo1_dettaglio.png" alt="Foto retro Capo 1">
         </main>
-
-</body>
+        
+    </div> </body>
 </html>
