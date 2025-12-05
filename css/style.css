@@ -1,77 +1,286 @@
-/* Resetta il body */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    /* Non mettere NESSUN background-color qui! */
+/* --- IMPORTA FONT "TRAP/STREET" --- */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+
+/* --- RESET UNIVERSALE (FONDAMENTALE) --- */
+* {
+    box-sizing: border-box;
 }
 
-/* --- STILI PER LO SFONDO VIDEO --- */
+/* Resetta il body */
+body {
+    font-family: 'Oswald', sans-serif; /* Font più aggressivo */
+    margin: 0;
+    padding: 0;
+    color: #fff; /* Testo bianco di base */
+    text-transform: uppercase; /* Tutto maiuscolo fa molto streetwear */
+    letter-spacing: 1px;
+}
 
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+/* --- STILI PER LO SFONDO VIDEO (INVARIATO) --- */
 #video-background {
-    position: fixed; /* 1. Fissalo! */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* 2. Alto 100% dello schermo (viewport height) */
-    z-index: -1;   /* 3. Mettilo DIETRO a tutto */
-    overflow: hidden; /* 4. Nascondi le parti che escono */
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
 }
 
 #video-background video {
-    /* 5. Fai in modo che il video copra l'intera area senza deformarsi */
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 /* --- STILI PER IL CONTENUTO SCORREVOLE --- */
-
 #scrollable-content {
-    position: relative; /* 6. Necessario per far funzionare lo z-index */
-    z-index: 1;         /* 7. Mettilo DAVANTI al video */
+    position: relative;
+    z-index: 1;
     width: 100%;
-    /* 8. Il background deve essere trasparente per vedere il video sotto */
-    background-color: transparent; 
-}
-
-/* Ora metti i padding qui, invece che sul body */
-header, main {
-    padding: 20px;
-    /* Consiglio: metti un po' di trasparenza scura ai tuoi
-       contenitori per migliorare la leggibilità del testo sul video */
-}
-
-/* --- IL TUO VECCHIO STILE (va ancora bene) --- */
-
-h1, h2 {
-    color: #FFF; /* Cambiato in bianco per leggibilità sul video */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Ombra per leggere meglio */
-}
-
-.vetrina {
+    background-color: transparent;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column; /* Mobile-first: mettili in colonna */
-    gap: 20px;
+    flex-direction: column;
+    align-items: center; /* Centra tutto il contenuto */
+}
+
+header {
+    padding: 40px 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    /* Gradiente scuro in alto per rendere leggibile il titolo */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+}
+
+header h1 {
+    font-size: 3rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+header a {
+    font-size: 0.9rem;
+    color: #ccc;
+    border-bottom: 1px solid transparent;
+}
+
+header a:hover {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+main {
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px; /* Limita la larghezza su schermi grandi */
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 0px #000;
+}
+
+/* --- VETRINA PRODOTTI (STILE DARK TRAP) --- */
+.vetrina {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    width: 100%;
 }
 
 .prodotto-anteprima {
-    border: 1px solid #ccc;
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.173); /* Sfondo leggermente trasparente */
+    background-color: rgba(0, 0, 0, 0.6); /* Sfondo scuro semitrasparente */
+    backdrop-filter: blur(10px); /* Effetto vetro sfocato - molto moderno */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
     text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.prodotto-anteprima:hover {
+    transform: translateY(-5px); /* Si alza leggermente */
+    border-color: #fff; /* Bordo diventa bianco puro */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .prodotto-anteprima img {
     max-width: 100%;
     height: auto;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5)); /* Ombra sotto la felpa */
+    transition: transform 0.3s ease;
 }
 
-/* --- MEDIA QUERY PER IL DESKTOP (Responsive) --- */
+.prodotto-anteprima:hover img {
+    transform: scale(1.05); /* Zoom leggero sulla felpa */
+}
+
+.prodotto-anteprima h3 {
+    font-size: 1.5rem;
+    margin: 15px 0 5px 0;
+    color: #fff;
+}
+
+.prodotto-anteprima p {
+    font-size: 1rem;
+    color: #aaa;
+    font-weight: 400;
+}
+
+/* --- DETTAGLIO PRODOTTO (PAGINE INTERNE) --- */
+main img {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+}
+
+main p {
+    text-align: center;
+    font-size: 1.2rem;
+    background: rgba(0,0,0,0.5);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px; /* Leggermente arrotondato o 0 per spigoloso */
+}
+
+/* --- MEDIA QUERY --- */
 @media (min-width: 769px) {
-    
-    /* Quando lo schermo è largo, mettili in riga */
     .vetrina {
-        flex-direction: row; 
+        grid-template-columns: repeat(2, 1fr); /* Due colonne su desktop */
+    }
+    
+    header h1 {
+        font-size: 4rem;
+    }
+}
+
+/* --- STILI PAGINA DETTAGLIO (LAYOUT TRAP) --- */
+
+/* Contenitore generale */
+.scheda-prodotto {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+}
+
+/* Griglia Immagini */
+.trap-gallery {
+    display: flex;
+    flex-direction: column; /* Mobile: una sotto l'altra */
+    gap: 20px;
+    width: 100%;
+}
+
+.lato-img {
+    position: relative;
+    width: 100%; 
+    /* box-sizing è gestito dal reset universale sopra */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    margin: 0 auto; /* Forza la centratura se ci fosse spazio extra */
+}
+
+.lato-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Effetto hover leggero */
+    transition: transform 0.3s ease;
+}
+
+.lato-img:hover img {
+    transform: scale(1.02);
+}
+
+/* Etichetta "FRONTE/RETRO" stile tattico */
+.label-neon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--dark-bg);
+    color: var(--neon-green);
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border: 1px solid var(--neon-green);
+    z-index: 10;
+    font-family: 'Roboto Mono', monospace;
+    pointer-events: none; /* Lascia cliccare attraverso */
+}
+
+/* Info e Descrizione */
+.trap-info {
+    text-align: center;
+    max-width: 800px;
+    background: rgba(0,0,0,0.8);
+    padding: 30px;
+    border: 1px solid var(--neon-purple); /* Bordo viola per staccare */
+    box-shadow: 0 0 15px rgba(188, 19, 254, 0.2);
+}
+
+.trap-info h2 {
+    font-size: 2rem;
+    margin-top: 0;
+    color: #fff;
+    border-bottom: none; /* Rimuoviamo quello generico */
+    text-shadow: 0 0 5px var(--neon-purple);
+}
+
+.prezzo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--neon-green);
+    margin: 20px 0;
+}
+
+/* Bottone carrello ignorante */
+.buy-btn {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 15px 40px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.2s;
+    text-transform: uppercase;
+}
+
+.buy-btn:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* --- MEDIA QUERY DESKTOP --- */
+/* Qui avviene la magia per metterle a fianco */
+@media (min-width: 769px) {
+    .trap-gallery {
+        flex-direction: row; /* Mette le immagini in riga */
+        justify-content: center;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+    .lato-img {
+        width: 45%; /* Prendono quasi metà schermo ciascuna */
     }
 }
