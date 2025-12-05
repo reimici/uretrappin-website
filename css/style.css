@@ -1,286 +1,362 @@
-/* --- IMPORTA FONT "TRAP/STREET" --- */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+/* =========================================
+   1. SETUP & VARIABILI
+   ========================================= */
 
-/* --- RESET UNIVERSALE (FONDAMENTALE) --- */
+   @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap');
+
+   :root {
+       /* Palette Colori Trap */
+       --neon-green: #39ff14;
+       --neon-purple: #bc13fe;
+       --dark-bg: #050505;
+       --glass-bg: rgba(10, 10, 10, 0.85);
+       --text-main: #ffffff;
+       --text-muted: #aaaaaa;
+   
+       /* Font */
+       --font-title: 'Oswald', sans-serif;
+       --font-tech: 'Roboto Mono', monospace;
+   }
+   
+  /* =========================================
+   2. RESET & BASE (MODIFICATO)
+   ========================================= */
+
 * {
     box-sizing: border-box;
 }
 
-/* Resetta il body */
 body {
-    font-family: 'Oswald', sans-serif; /* Font più aggressivo */
+    font-family: var(--font-tech);
     margin: 0;
     padding: 0;
-    color: #fff; /* Testo bianco di base */
-    text-transform: uppercase; /* Tutto maiuscolo fa molto streetwear */
+    color: var(--text-main);
+    text-transform: uppercase;
     letter-spacing: 1px;
+    overflow-x: hidden;
+
+    /* --- FIX LUMINOSITÀ SFONDO --- */
+    background-color: #0a0a0a; /* Un grigio molto scuro, non nero assoluto */
+    
+    background-image: 
+        /* 1. Vignettatura più morbida (non copre tutto) */
+        radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.7) 100%),
+        /* 2. Griglia Verticale MOLTO più visibile (0.15 opacità) */
+        linear-gradient(90deg, rgba(55, 255, 20, 0.466) 1px, transparent 1px),
+        /* 3. Griglia Orizzontale */
+        linear-gradient(rgba(57, 255, 20, 0.15) 1px, transparent 1px);
+
+    /* Dimensione quadrati un po' più grande */
+    background-size: 100% 100%, 50px 50px, 50px 50px;
+    
+    background-attachment: fixed;
+    background-position: center;
 }
 
 a {
     text-decoration: none;
     color: inherit;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
-/* --- STILI PER LO SFONDO VIDEO (INVARIATO) --- */
-#video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: -1;
-    overflow: hidden;
-}
-
-#video-background video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* --- STILI PER IL CONTENUTO SCORREVOLE --- */
-#scrollable-content {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    background-color: transparent;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra tutto il contenuto */
-}
-
-header {
-    padding: 40px 20px;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-    /* Gradiente scuro in alto per rendere leggibile il titolo */
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
-}
-
-header h1 {
-    font-size: 3rem;
-    margin: 0;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-    font-weight: 700;
-    letter-spacing: 4px;
-}
-
-header a {
-    font-size: 0.9rem;
-    color: #ccc;
-    border-bottom: 1px solid transparent;
-}
-
-header a:hover {
-    color: #fff;
-    border-bottom: 1px solid #fff;
-}
-
-main {
-    padding: 20px;
-    width: 100%;
-    max-width: 1200px; /* Limita la larghezza su schermi grandi */
-    box-sizing: border-box;
-}
-
-h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 40px;
-    text-shadow: 2px 2px 0px #000;
-}
-
-/* --- VETRINA PRODOTTI (STILE DARK TRAP) --- */
-.vetrina {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-    width: 100%;
-}
-
-.prodotto-anteprima {
-    background-color: rgba(0, 0, 0, 0.6); /* Sfondo scuro semitrasparente */
-    backdrop-filter: blur(10px); /* Effetto vetro sfocato - molto moderno */
+   /* =========================================
+      4. LAYOUT PRINCIPALE & HEADER
+      ========================================= */
+   
+   #scrollable-content {
+       position: relative;
+       z-index: 1;
+       width: 100%;
+       min-height: 100vh;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+   }
+   
+   header {
+       padding: 60px 20px;
+       text-align: center;
+       width: 100%;
+       background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+   }
+   
+   header a {
+       font-size: 0.9rem;
+       color: var(--text-muted);
+       border-bottom: 1px solid transparent;
+   }
+   
+   header a:hover {
+       color: #fff;
+       border-color: #fff;
+   }
+   
+   /* --- IL FIX È QUI SOTTO --- */
+   main {
+       padding: 20px;
+       width: 100%;
+       max-width: 1200px;
+       margin: 0 auto; /* <--- QUESTO CENTRA IL BLOCCO NELLA PAGINA */
+   }
+   
+   /* =========================================
+      5. TIPOGRAFIA & GLITCH FX
+      ========================================= */
+   
+   h1.glitch {
+       font-family: var(--font-title);
+       font-size: 3.5rem;
+       font-weight: 700;
+       position: relative;
+       color: #fff;
+       letter-spacing: 4px;
+       margin: 0;
+       text-shadow: 2px 2px 0px var(--neon-purple);
+       line-height: 1.2;
+   }
+   
+   h1.glitch::before, h1.glitch::after {
+       content: attr(data-text);
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background: transparent;
+   }
+   
+   h1.glitch::before {
+       left: 2px;
+       text-shadow: -1px 0 #ff00c1;
+       clip: rect(44px, 450px, 56px, 0);
+       animation: glitch-anim 5s infinite linear alternate-reverse;
+   }
+   
+   h1.glitch::after {
+       left: -2px;
+       text-shadow: -1px 0 var(--neon-green);
+       clip: rect(44px, 450px, 56px, 0);
+       animation: glitch-anim-2 5s infinite linear alternate-reverse;
+   }
+   
+   h2 {
+       text-align: center;
+       font-family: var(--font-title);
+       font-size: 2rem;
+       margin-bottom: 40px;
+       color: #fff;
+       text-shadow: 2px 2px 0px #000;
+   }
+   
+   /* =========================================
+      6. VETRINA PRODOTTI (HOME)
+      ========================================= */
+   
+   .vetrina {
+       display: grid;
+       grid-template-columns: 1fr;
+       gap: 40px;
+       width: 100%;
+   }
+   
+   .prodotto-anteprima {
+    background-color: #ffffff1a;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 20px;
+    
+    /* PADDING RIDOTTO: Era 20px, passiamo a 15px */
+    padding: 15px; 
+    
     text-align: center;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-}
-
-.prodotto-anteprima:hover {
-    transform: translateY(-5px); /* Si alza leggermente */
-    border-color: #fff; /* Bordo diventa bianco puro */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.prodotto-anteprima img {
-    max-width: 100%;
-    height: auto;
-    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5)); /* Ombra sotto la felpa */
-    transition: transform 0.3s ease;
-}
-
-.prodotto-anteprima:hover img {
-    transform: scale(1.05); /* Zoom leggero sulla felpa */
+    position: relative;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
 }
 
 .prodotto-anteprima h3 {
-    font-size: 1.5rem;
-    margin: 15px 0 5px 0;
-    color: #fff;
-}
-
-.prodotto-anteprima p {
-    font-size: 1rem;
-    color: #aaa;
-    font-weight: 400;
-}
-
-/* --- DETTAGLIO PRODOTTO (PAGINE INTERNE) --- */
-main img {
-    display: block;
-    margin: 0 auto 20px auto;
-    max-width: 100%;
-    height: auto;
-    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
-}
-
-main p {
-    text-align: center;
-    font-size: 1.2rem;
-    background: rgba(0,0,0,0.5);
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 4px; /* Leggermente arrotondato o 0 per spigoloso */
-}
-
-/* --- MEDIA QUERY --- */
-@media (min-width: 769px) {
-    .vetrina {
-        grid-template-columns: repeat(2, 1fr); /* Due colonne su desktop */
-    }
+    font-family: var(--font-title);
     
-    header h1 {
-        font-size: 4rem;
-    }
-}
-
-/* --- STILI PAGINA DETTAGLIO (LAYOUT TRAP) --- */
-
-/* Contenitore generale */
-.scheda-prodotto {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: center;
-    width: 100%;
-}
-
-/* Griglia Immagini */
-.trap-gallery {
-    display: flex;
-    flex-direction: column; /* Mobile: una sotto l'altra */
-    gap: 20px;
-    width: 100%;
-}
-
-.lato-img {
-    position: relative;
-    width: 100%; 
-    /* box-sizing è gestito dal reset universale sopra */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.6);
-    padding: 10px;
-    margin: 0 auto; /* Forza la centratura se ci fosse spazio extra */
-}
-
-.lato-img img {
-    width: 100%;
-    height: auto;
-    display: block;
-    /* Effetto hover leggero */
-    transition: transform 0.3s ease;
-}
-
-.lato-img:hover img {
-    transform: scale(1.02);
-}
-
-/* Etichetta "FRONTE/RETRO" stile tattico */
-.label-neon {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: var(--dark-bg);
-    color: var(--neon-green);
-    font-size: 0.8rem;
-    padding: 2px 8px;
-    border: 1px solid var(--neon-green);
-    z-index: 10;
-    font-family: 'Roboto Mono', monospace;
-    pointer-events: none; /* Lascia cliccare attraverso */
-}
-
-/* Info e Descrizione */
-.trap-info {
-    text-align: center;
-    max-width: 800px;
-    background: rgba(0,0,0,0.8);
-    padding: 30px;
-    border: 1px solid var(--neon-purple); /* Bordo viola per staccare */
-    box-shadow: 0 0 15px rgba(188, 19, 254, 0.2);
-}
-
-.trap-info h2 {
-    font-size: 2rem;
-    margin-top: 0;
+    /* FONT RIDOTTO: Era 1.5rem, passiamo a 1.2rem */
+    font-size: 1.2rem; 
+    
+    margin: 10px 0 5px 0;
     color: #fff;
-    border-bottom: none; /* Rimuoviamo quello generico */
-    text-shadow: 0 0 5px var(--neon-purple);
 }
-
-.prezzo {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--neon-green);
-    margin: 20px 0;
-}
-
-/* Bottone carrello ignorante */
-.buy-btn {
-    background: transparent;
-    border: 2px solid #fff;
-    color: #fff;
-    padding: 15px 40px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: 0.2s;
-    text-transform: uppercase;
-}
-
-.buy-btn:hover {
-    background: #fff;
-    color: #000;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-}
-
-/* --- MEDIA QUERY DESKTOP --- */
-/* Qui avviene la magia per metterle a fianco */
-@media (min-width: 769px) {
-    .trap-gallery {
-        flex-direction: row; /* Mette le immagini in riga */
-        justify-content: center;
-        align-items: flex-start;
-        gap: 30px;
+   
+   .prodotto-anteprima img {
+       max-width: 100%;
+       height: auto;
+       filter: grayscale(100%) contrast(1.1);
+       transition: 0.3s ease;
+   }
+   
+   .prodotto-anteprima:hover img {
+       filter: grayscale(0%) contrast(1.1) drop-shadow(0 0 8px var(--neon-purple));
+       transform: scale(1.05);
+   }
+   
+   .prodotto-anteprima h3 {
+       font-family: var(--font-title);
+       font-size: 1.5rem;
+       margin: 15px 0 5px 0;
+       color: #fff;
+   }
+   
+   .prodotto-anteprima:hover h3 {
+       color: var(--neon-green);
+   }
+   
+   .prodotto-anteprima p {
+       font-size: 1rem;
+       color: var(--text-muted);
+       border: 1px solid #333;
+       display: inline-block;
+       padding: 5px 10px;
+   }
+   
+   /* =========================================
+      7. PAGINA PRODOTTO (DETTAGLIO)
+      ========================================= */
+   
+   .scheda-prodotto {
+       display: flex;
+       flex-direction: column;
+       gap: 40px;
+       align-items: center;
+       width: 100%;
+   }
+   
+   .trap-gallery {
+       display: flex;
+       flex-direction: column;
+       gap: 20px;
+       width: 100%;
+       /* Assicura che su mobile sia centrato */
+       justify-content: center; 
+       align-items: center;
+   }
+   
+   .lato-img {
+       position: relative;
+       width: 100%;
+       border: 1px solid rgba(255, 255, 255, 0.1);
+       background: #ffffff1c;
+       padding: 10px;
+   }
+   
+   .lato-img img {
+       width: 100%;
+       height: auto;
+       display: block;
+   }
+   
+   .label-neon {
+       position: absolute;
+       top: 10px;
+       left: 10px;
+       background-color: var(--dark-bg);
+       color: var(--neon-green);
+       font-family: var(--font-tech);
+       font-size: 0.75rem;
+       padding: 2px 6px;
+       border: 1px solid var(--neon-green);
+       z-index: 2;
+       pointer-events: none;
+   }
+   
+   .trap-info {
+       width: 100%;
+       max-width: 800px;
+       background: rgba(0,0,0,0.85);
+       padding: 30px;
+       border: 1px solid var(--neon-purple);
+       box-shadow: 0 0 15px rgba(188, 19, 254, 0.15);
+       text-align: center;
+       /* Assicurati che anche questo sia centrato nella pagina */
+       margin: 0 auto;
+   }
+   
+   .trap-info h2 {
+       color: #fff;
+       margin-top: 0;
+       text-shadow: 0 0 5px var(--neon-purple);
+   }
+   
+   .desc-text {
+       font-size: 1rem;
+       color: #ccc;
+       line-height: 1.6;
+   }
+   
+   .prezzo {
+       font-size: 2.2rem;
+       font-family: var(--font-title);
+       color: var(--neon-green);
+       margin: 20px 0;
+   }
+   
+   .buy-btn {
+       background: transparent;
+       border: 2px solid #fff;
+       color: #fff;
+       padding: 15px 50px;
+       font-family: var(--font-title);
+       font-size: 1.2rem;
+       text-transform: uppercase;
+       cursor: pointer;
+       transition: 0.2s;
+   }
+   
+   .buy-btn:hover {
+       background: #fff;
+       color: #000;
+       box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+       transform: scale(1.05);
+   }
+   
+   /* =========================================
+      8. ANIMAZIONI
+      ========================================= */
+   
+   @keyframes glitch-anim {
+       0% { clip: rect(31px, 9999px, 94px, 0); transform: skew(0.85deg); }
+       5% { clip: rect(70px, 9999px, 11px, 0); transform: skew(0.04deg); }
+       10% { clip: rect(27px, 9999px, 96px, 0); transform: skew(0.24deg); }
+       15% { clip: rect(1px, 9999px, 86px, 0); transform: skew(0.58deg); }
+       20% { clip: rect(87px, 9999px, 96px, 0); transform: skew(0.82deg); }
+       25% { clip: rect(44px, 9999px, 9px, 0); transform: skew(0.32deg); }
+       100% { clip: rect(66px, 9999px, 30px, 0); transform: skew(0.79deg); }
+   }
+   
+   @keyframes glitch-anim-2 {
+       0% { clip: rect(65px, 9999px, 100px, 0); transform: skew(0.3deg); }
+       5% { clip: rect(5px, 9999px, 54px, 0); transform: skew(0.1deg); }
+       10% { clip: rect(88px, 9999px, 12px, 0); transform: skew(0.7deg); }
+       100% { clip: rect(12px, 9999px, 67px, 0); transform: skew(0.2deg); }
+   }
+   
+   /* =========================================
+      9. MEDIA QUERY (DESKTOP)
+      ========================================= */
+   
+   @media (min-width: 769px) {
+    .vetrina {
+        /* Passiamo da 2 a 3 colonne -> Box più piccoli automaticamente */
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 30px; /* Riduciamo un po' lo spazio tra i box (era 40px) */
     }
-
-    .lato-img {
-        width: 45%; /* Prendono quasi metà schermo ciascuna */
-    }
-}
+       
+       h1.glitch {
+           font-size: 5rem;
+       }
+   
+       .trap-gallery {
+           flex-direction: row;
+           justify-content: center; /* Centra orizzontalmente i figli */
+           align-items: flex-start;
+           gap: 30px;
+       }
+   
+       .lato-img {
+           width: 45%; 
+       }
+   }
