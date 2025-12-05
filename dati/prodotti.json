@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "nome": "DARK SOUL HOODIE",
+        "prezzo": "49.90",
+        "descrizione": "Tessuto tecnico, fit oversize, cattiveria pura. Non per deboli di cuore.",
+        "img_fronte": "images/capo1_principale.png",
+        "img_retro": "images/capo1_dettaglio.png"
+    },
+    {
+        "id": 2,
+        "nome": "TOXIC WASTE HOODIE",
+        "prezzo": "59.90",
+        "descrizione": "Ispirata alle scorie radioattive. Brilla al buio (forse).",
+        "img_fronte": "images/capo2_principale.png",
+        "img_retro": "images/capo2_dettaglio.png"
+    },
+    {
+        "id": 3,
+        "nome": "GLITCH TEE",
+        "prezzo": "29.90",
+        "descrizione": "T-shirt basica ma con vibes illegali.",
+        "img_fronte": "images/capo1_principale.png",
+        "img_retro": "images/capo1_dettaglio.png"
+    }
+]

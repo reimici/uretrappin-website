@@ -7,44 +7,13 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-    <div id="video-background">
-        <video autoplay loop muted playsinline poster="images/poster-fallback.jpg">
-            <source src="videos/video-mobile.mp4" type="video/mp4" media="all and (max-width: 768px)">
-            <source src="videos/video-desktop.mp4" type="video/mp4" media="all and (min-width: 769px)">
-            Il tuo browser non supporta i video.
-        </video>
-    </div>
-
-    <div id="scrollable-content">
-
-        <header>
-            <h1>Vetrina Capi</h1>
-        </header>
-
-        <main>
-            <h2>I nostri prodotti</h2>
-            
-            <div class="vetrina">
-                
-                <div class="prodotto-anteprima">
-                    <a href="pagine/prodotto1.html">
-                        <img src="images/capo1_principale.png" alt="Anteprima Capo 1">
-                        <h3>Nome Capo 1</h3>
-                    </a>
-                    <p>Descrizione breve o prezzo</p>
-                </div>
-
-                <div class="prodotto-anteprima">
-                    <a href="pagine/prodotto2.html">
-                        <img src="images/capo2_principale.png" alt="Anteprima Capo 2">
-                        <h3>Nome Capo 2</h3>
-                    </a>
-                    <p>Descrizione breve o prezzo</p>
-                </div>
-
-            </div>
-        </main>
+    <main>
+        <h2 style="color:white; text-align:center;">I NOSTRI PRODOTTI</h2>
         
-    </div> </body>
+        <div class="vetrina" id="vetrina-dinamica">
+            </div>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
 </html>

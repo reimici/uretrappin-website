@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caricamento...</title> <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <div id="video-background">
+        <video autoplay loop muted playsinline poster="../images/poster-fallback.jpg">
+            <source src="../videos/video-mobile.mp4" type="video/mp4" media="all and (max-width: 768px)">
+            <source src="../videos/video-desktop.mp4" type="video/mp4" media="all and (min-width: 769px)">
+        </video>
+    </div>
+
+    <div id="scrollable-content">
+        <header>
+            <a href="../index.html">← TORNA ALLA BASE</a>
+        </header>
+
+        <main class="scheda-prodotto" id="prodotto-dinamico">
+            <p style="color:white; text-align:center;">Caricamento Drip in corso...</p>
+        </main>
+        
+    </div>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>
